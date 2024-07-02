@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Strelka.Chat</title>
+        <link rel="stylesheet" href="business.css">
+    </head>
+<body>
+    <div class="contact">
+        <h1>Strelka.Chat</h1>
+        <span class="bold_message">Узнайте о нас больше!</span>
+        <span>Оставьте свои контакты, и мы свяжемся с вами</span>
+        <form id="contactForm">
+            <input type="text" placeholder="Название компании" required>
+            <input type="tel" placeholder="Телефон компании" required>
+            <button type="submit">Оставить заявку</button>
+        </form>
+        <div class="message" id="thankYouMessage">Спасибо! Мы свяжемся с вами в ближайшее время.</div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // предотвращаем стандартное поведение формы
+
+            const inputs = this.querySelectorAll('input');
+            for (const input of inputs) {
+                input.value = ''; // очищаем поля ввода
+            }
+
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            thankYouMessage.style.display = 'block'; // показываем сообщение
+
+            setTimeout(() => {
+                thankYouMessage.style.display = 'none'; // скрываем сообщение через 3 секунды
+            }, 3000);
+        });
+    </script>
+</body>
+
+</html>
